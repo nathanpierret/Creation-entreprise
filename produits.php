@@ -27,7 +27,7 @@
     <div class="nav">
         <img src="images/Logo.png" alt="Logo">
         <ul>
-            <li><a href="index.php">Page d'accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="entreprise.php">Notre entreprise</a></li>
             <li><a href="produits.php">Nos produits</a></li>
             <li><a href="contacts.php">Contactez-nous</a></li>
@@ -51,7 +51,6 @@
                     <div><?= $de["description"]?></div>
                 </div>
                 <a href="#" class="bouton-achat3">Détails</a>
-                <a href="#" class="bouton-achat4">Ajouter au panier</a>
             </div>
             <?php } ?>
         </div>
@@ -71,7 +70,6 @@
                     <div><?= $var["description"]?></div>
                 </div>
                 <a href="#" class="bouton-achat">Détails</a>
-                <a href="#" class="bouton-achat2">Ajouter au panier</a>
             </div>
             <?php } ?>
         </div>
@@ -79,20 +77,26 @@
     </div>
     <footer class="footer">
         <div>
-            <div class="title">Nos réseaux sociaux :</div>
+            <div><i class="fa-regular fa-copyright"></i> Paradice, Inc.</div>
             <div class="contacts">
                 <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
-            <div><i class="fa-regular fa-copyright"></i> Paradice, Inc.</div>
         </div>
-        <div class="horaires">
-            <div class="title">Horaires :</div>
-            <div>Lundi : Fermé</div>
-            <div>Mardi au Vendredi : 8:00 - 18:00</div>
-            <div>Samedi : 9:00 - 17:00</div>
-            <div>Dimanche : 8:30 - 12:30</div>
+
+        <div class="liens">
+            <a href="entreprise.php">Notre entreprise</a>
+            <a href="contacts.php">Contacts</a>
+            <a href="#">Politique de confidentialité</a>
+        </div>
+
+        <div class="infos">
+            <div>Coordonnées :</div>
+            <div><i class="fa-solid fa-phone"></i> : +33 3 84 48 97 32</div>
+            <div><i class="fa-solid fa-at"></i> : support.paradice@gmail.com</div>
+            <div><i class="fa-solid fa-location-dot"></i> : 45 Boulevard commercial</div>
+            <div>25000 Besançon</div>
         </div>
     </footer>
 </div>

@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    require_once "src/modele/produit-db.php";
+    require_once "src/modele/choix-db.php";
+    require_once "src/modele/variantes-db.php";
+    require_once "src/modele/couleur-db.php";
+
+    $id = null;
+    $erreur = null;
+
+    if (!empty($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        $erreur = "URL demandée non valide";
+    }
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,33 +37,90 @@
     <div class="nav">
         <img src="images/Logo.png" alt="Logo">
         <ul>
-            <li><a href="index.php">Page d'accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="entreprise.php">Notre entreprise</a></li>
             <li><a href="produits.php">Nos produits</a></li>
             <li><a href="contacts.php">Contactez-nous</a></li>
         </ul>
     </div>
 
-    <div class="content+">
-
+    <div class="content2">
+        <?php if (isset($erreur)) { ?>
+            <div class="erreur">Erreur : <?= $erreur?></div>
+        <?php } else {
+            $deChoisi = selectProductById($id); 
+            $variantesDe = selectAllVariantsIdFromProductId($id); ?>
+            <div class="carte-detail">
+                <img src="images/<?= $deChoisi["lib_photo"]?>" alt="Photo de dé à 20 faces" class="image4">
+                <div class="nom-article2">
+                    <div><?= $deChoisi["nom_prod"]?></div>
+                </div>
+                <div class="prix-achat2">
+                    <div><?= $deChoisi["prix_prod"]?> €</div>
+                </div>
+                <div class="description-rapide2">
+                    <div><?= $deChoisi["description"]?></div>
+                </div>
+                <form method="post" class="selection-produit">
+                    <label for="variante">Variante : </label>
+                    <select name="variante" id="variante">
+                        <?php foreach ($variantesDe as $variante) {
+                            $nomVariante = selectVariantById($variante["id_variante"]);?>
+                            <option value="<?= $variante["id_variante"]?>"><?php if (empty($nomVariante["nom-variante"])) {
+                                echo "Aucune";
+                                } else {
+                                echo $nomVariante["nom-variante"];
+                                }?></option>
+                        <?php } ?>
+                    </select>
+                    <button type="submit" name="variante"><i class="fa-solid fa-check"></i></button>
+                </form>
+                <?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (isset($_POST["variante"])) {
+                        $couleurDe = selectAllColorsIdFromProductIdAndVariantId($id,$_POST[""])?>
+                       <form method="post" class="selection-couleur">
+                        <label for="couleur">Couleur : </label>
+                        <select name="couleur" id="couleur">
+                        <?php foreach ($variantesDe as $variante) {
+                            $nomVariante = selectVariantById($variante["id_variante"]);?>
+                            <option value="<?= $variante["id_variante"]?>"><?php if (empty($nomVariante["nom-variante"])) {
+                        echo "Aucune";
+                        } else {
+                        echo $nomVariante["nom-variante"];
+                        }?></option>
+                        <?php } ?>
+                        </select>
+                        <button type="submit" name="variante"><i class="fa-solid fa-check"></i></button>
+                        </form>
+                    <?php }
+                }?>
+                <button class="bouton-achat2" type="submit">Détails</button>
+            </div>
+        <?php } ?>
     </div>
 
     <footer class="footer">
         <div>
-            <div class="title">Nos réseaux sociaux :</div>
+            <div><i class="fa-regular fa-copyright"></i> Paradice, Inc.</div>
             <div class="contacts">
                 <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
-            <div><i class="fa-regular fa-copyright"></i> Paradice, Inc.</div>
         </div>
-        <div class="horaires">
-            <div class="title">Horaires :</div>
-            <div>Lundi : Fermé</div>
-            <div>Mardi au Vendredi : 8:00 - 18:00</div>
-            <div>Samedi : 9:00 - 17:00</div>
-            <div>Dimanche : 8:30 - 12:30</div>
+
+        <div class="liens">
+            <a href="entreprise.php">Notre entreprise</a>
+            <a href="contacts.php">Contacts</a>
+            <a href="#">Politique de confidentialité</a>
+        </div>
+
+        <div class="infos">
+            <div>Coordonnées :</div>
+            <div><i class="fa-solid fa-phone"></i> : +33 3 84 48 97 32</div>
+            <div><i class="fa-solid fa-at"></i> : support.paradice@gmail.com</div>
+            <div><i class="fa-solid fa-location-dot"></i> : 45 Boulevard commercial</div>
+            <div>25000 Besançon</div>
         </div>
     </footer>
 </div>
