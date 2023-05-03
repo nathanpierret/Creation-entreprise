@@ -2,7 +2,7 @@
     require_once "src/modele/produit-db.php";
 
     $des = selectAllDiceProducts();
-    $vars = selectAllDiceVariants();
+    $packs = selectAllDiceVariants();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -50,26 +50,26 @@
                 <div class="description-rapide">
                     <div><?= $de["description"]?></div>
                 </div>
-                <a href="#" class="bouton-achat3">Détails</a>
+                <a href="details.php?id=<?= $de['id_prod']?>" class="bouton-achat3">Détails</a>
             </div>
             <?php } ?>
         </div>
 
-        <h2 class="title2">Nos choix de variantes</h2>
+        <h2 class="title2">Nos packs surprises</h2>
         <div class="cartes">
-            <?php foreach ($vars as $var) {?>
+            <?php foreach ($packs as $pack) {?>
             <div class="carte2">
-                <img src="images/<?= $var["lib_photo"]?>" alt="Photo de dé avec un point d'interrogation" class="image">
+                <img src="images/<?= $pack["lib_photo"]?>" alt="Photo de dé avec un point d'interrogation" class="image">
                 <div class="nom-article">
-                    <div><?= $var["nom_prod"]?></div>
+                    <div><?= $pack["nom_prod"]?></div>
                 </div>
                 <div class="prix-achat">
-                    <div><?= $var["prix_prod"]?> €</div>
+                    <div><?= $pack["prix_prod"]?> €</div>
                 </div>
                 <div class="description-rapide">
-                    <div><?= $var["description"]?></div>
+                    <div><?= $pack["description"]?></div>
                 </div>
-                <a href="#" class="bouton-achat">Détails</a>
+                <a href="details.php?id=<?= $pack['id_prod']?>" class="bouton-achat">Détails</a>
             </div>
             <?php } ?>
         </div>

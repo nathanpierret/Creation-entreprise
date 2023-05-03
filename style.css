@@ -19,7 +19,7 @@
 .container > *
 {
     padding: 20px;
-    font-size: 26px;
+    font-size: 1.2rem;
     font-family: 'Nunito', cursive;
 }
 
@@ -42,6 +42,7 @@
     grid-gap: 10px;
     align-items: center;
     list-style: none;
+    font-size: 1.5rem;
 }
 
 li > a
@@ -62,7 +63,7 @@ li > a:hover
     display: grid;
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 100px 350px 80px 100px 560px 80px 100px 150px;
+    grid-template-rows: 100px 250px 80px 100px 560px 80px 100px 150px;
     grid-template-areas: "titre titre vide1"
                          "texte texte image"
                          "vide bouton1 vide2"
@@ -172,7 +173,6 @@ li > a:hover
     text-decoration: none;
     color: #EFF3F5;
     text-align: center;
-    font-size: 14px;
     padding: 15px;
     text-transform: uppercase;
     border-radius: 0 0 10px 10px;
@@ -200,7 +200,6 @@ li > a:hover
 {
     list-style-type: none;
     margin-left: 70px;
-    font-size: 22px;
     color: #284E7B;
 }
 
@@ -231,12 +230,6 @@ li > a:hover
 .ul2 > li
 {
     margin-bottom: 10px;
-    font-size: 20px;
-}
-
-.ul2:hover
-{
-    transform: scale(1.07);
 }
 
 form
@@ -266,7 +259,6 @@ form > input, select
     padding: 12px;
     border: 1px solid #427AA1;
     border-radius: 5px;
-    font-size: 18px;
     font-family: 'Nunito',cursive;
     box-shadow: 5px 5px 5px #284E7B;
 }
@@ -281,16 +273,10 @@ form > input, select
     justify-content: center;
 }
 
-.fiches > select
-{
-    font-size: 16px;
-}
-
 .fiches > button
 {
     background: #284E7B;
     color: #ADD4F3;
-    font-size: 20px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -307,6 +293,28 @@ form > input, select
     transform: scale(1.07);
 }
 
+.bouton-fiche
+{
+    text-decoration: none;
+    color: white;
+    background-color: #427AA1;
+    border: 0 #427AA1 solid;
+    border-radius: 10px;
+    box-shadow: 0 3px 2px 3px #284E7B;
+    margin: 20px auto -20px;
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    transition: all 700ms;
+}
+
+.bouton-fiche:hover
+{
+    color: black;
+    background-color: #ADD4F3;
+    transform: scale(1.10);
+}
+
 .image3
 {
     width: 75%;
@@ -315,11 +323,6 @@ form > input, select
     border: #ADD4F3 5px solid;
     box-shadow: 0 6px 5px 2px #284E7B;
     transition: all 500ms;
-}
-
-.image3:hover
-{
-    transform: scale(1.03);
 }
 
 .message
@@ -336,7 +339,6 @@ form > textarea
     border: 1px solid #427AA1;
     border-radius: 5px;
     resize: none;
-    font-size: 18px;
     font-family: 'Nunito',cursive;
     box-shadow: 5px 5px 5px #284E7B;
 }
@@ -347,7 +349,7 @@ form > input[type=submit]
     justify-self: center;
     background: #284E7B;
     color: #ADD4F3;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -380,7 +382,7 @@ form > input[type=submit]:hover
 .titre
 {
     font-family: 'Kanit', sans-serif;
-    font-size: 46px;
+    font-size: 2.5rem;
     grid-area: titre;
     justify-self: center;
     align-self: center;
@@ -395,7 +397,7 @@ form > input[type=submit]:hover
 .title2
 {
     font-family: 'Kanit', sans-serif;
-    font-size: 46px;
+    font-size: 2.5rem;
     justify-self: center;
     align-self: center;
     color: #659ABD;
@@ -409,11 +411,6 @@ form > input[type=submit]:hover
     border: #ADD4F3 5px solid;
     box-shadow: 0 6px 5px 2px #284E7B;
     transition: all 500ms;
-}
-
-.image2:hover
-{
-    transform: scale(1.07);
 }
 
 .flex-postes
@@ -458,15 +455,9 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.paragraphe1:hover
-{
-    transform: scale(1.07);
-}
-
 .paragraphe
 {
     width: 80%;
-    font-size: 22px;
     justify-self: center;
     align-self: center;
     text-align: justify;
@@ -478,26 +469,16 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.paragraphe:hover
-{
-    transform: scale(1.07);
-}
-
 .img1
 {
     grid-area: image;
-    width: 70%;
+    width: 60%;
     justify-self: center;
     align-self: center;
     border-radius: 20px;
     border: #659ABD 5px solid;
     box-shadow: 0 6px 5px 3px #284E7B;
     transition: all 500ms;
-}
-
-.img1:hover
-{
-    transform: scale(1.07);
 }
 
 .vide2
@@ -532,6 +513,7 @@ form > input[type=submit]:hover
     display: flex;
     grid-area: bouton1;
     background-color: #659ABD;
+    font-size: 1.4rem;
     margin: 0 auto;
     border-radius: 30px;
     cursor: pointer;
@@ -554,7 +536,7 @@ form > input[type=submit]:hover
 .titre2
 {
     font-family: 'Kanit', sans-serif;
-    font-size: 46px;
+    font-size: 2.5rem;
     grid-area: titre2;
     justify-self: center;
     align-self: center;
@@ -600,12 +582,6 @@ form > input[type=submit]:hover
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
     background-color: rgba(239,243,245,60%);
-    transition: all 500ms;
-}
-
-.carte-detail:hover
-{
-    transform: scale(1.06);
 }
 
 .image
@@ -634,6 +610,7 @@ form > input[type=submit]:hover
     grid-row: 2 / 3;
     justify-self: center;
     align-self: center;
+    font-size: 1.5rem;
 }
 
 .nom-article2
@@ -642,7 +619,7 @@ form > input[type=submit]:hover
     grid-column: 1 / 4;
     justify-self: center;
     align-self: center;
-    font-size: 40px;
+    font-size: 2rem;
 }
 
 .prix-achat
@@ -650,6 +627,7 @@ form > input[type=submit]:hover
     grid-row: 3 / 4;
     justify-self: center;
     align-self: center;
+    font-size: 1.3rem;
 }
 
 .prix-achat2
@@ -658,7 +636,7 @@ form > input[type=submit]:hover
     grid-column: 1 / 4;
     justify-self: center;
     align-self: center;
-    font-size: 36px;
+    font-size: 1.6rem;
 }
 
 .description-rapide
@@ -667,7 +645,6 @@ form > input[type=submit]:hover
     justify-self: center;
     align-self: center;
     padding: 0 15px;
-    font-size: 20px;
     text-align: justify;
 }
 
@@ -675,39 +652,12 @@ form > input[type=submit]:hover
 {
     grid-row: 4 / 5;
     grid-column: 1 / 4;
+    width: 90%;
+    font-size: 1.4rem;
     justify-self: center;
     align-self: center;
     padding: 0 30px;
     text-align: justify;
-    font-size: 28px;
-}
-
-.selection-produit
-{
-    grid-row: 5 / 6;
-    grid-column: 1 / 4;
-    display: flex;
-    height: 80px;
-    width: 90%;
-}
-
-.selection-produit label
-{
-    width: 15%;
-    text-align: center;
-    align-self: center;
-}
-
-.selection-produit select
-{
-    width: 20%;
-    align-self: center;
-}
-
-.selection-produit input[type=number]
-{
-    width: 20%;
-    align-self: center;
 }
 
 .bouton-achat
@@ -717,8 +667,7 @@ form > input[type=submit]:hover
     text-decoration: none;
     color: #EFF3F5;
     text-align: center;
-    font-size: 14px;
-    padding: 15px;
+    padding: 13px;
     text-transform: uppercase;
     border-radius: 0 0 10px 10px;
     transition: all 700ms;
@@ -730,7 +679,51 @@ form > input[type=submit]:hover
     color: #659ABD;
 }
 
-.bouton-achat2
+.stock-commande
+{
+    grid-row: 5 / 6;
+    grid-column: 1 / 4;
+    width: 40%;
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+    justify-self: center;
+}
+
+.rouge
+{
+    color: red;
+    align-self: center;
+}
+
+.vert
+{
+    color: green;
+    align-self: center;
+}
+
+.bouton-commande
+{
+    background-color: #659ABD;
+    text-decoration: none;
+    color: #EFF3F5;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 700ms;
+    align-self: center;
+    box-shadow: 5px 5px 5px #676767;
+}
+
+.bouton-commande:hover
+{
+    background-color: #ADD4F3;
+    color: #659ABD;
+    cursor: pointer;
+    transform: scale(1.17);
+}
+
+.bouton-retour
 {
     grid-row: 6 / 7;
     grid-column: 1 / 4;
@@ -738,17 +731,17 @@ form > input[type=submit]:hover
     text-decoration: none;
     color: #EFF3F5;
     text-align: center;
-    font-size: 20px;
     padding: 13px;
     text-transform: uppercase;
     border-radius: 0 0 10px 10px;
     transition: all 700ms;
 }
 
-.bouton-achat2:hover
+.bouton-retour:hover
 {
     background-color: #ADD4F3;
     color: #659ABD;
+    cursor: pointer;
 }
 
 .bouton2
@@ -756,6 +749,7 @@ form > input[type=submit]:hover
     display: flex;
     grid-area: bouton2;
     background-color: #659ABD;
+    font-size: 1.4rem;
     margin: 0 auto;
     border-radius: 30px;
     cursor: pointer;
@@ -772,7 +766,7 @@ form > input[type=submit]:hover
 .titre3
 {
     font-family: 'Kanit', sans-serif;
-    font-size: 46px;
+    font-size: 2.5rem;
     grid-area: titre3;
     justify-self: center;
     align-self: center;
@@ -791,7 +785,7 @@ form > input[type=submit]:hover
 {
     font-weight: bold;
     font-family: 'Kanit', sans-serif;
-    font-size: 50px;
+    font-size: 2.2rem;
     transition: all 400ms;
 }
 
@@ -829,11 +823,6 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.bulle1:hover, .bulle2:hover, .bulle3:hover
-{
-    transform: scale(1.10);
-}
-
 .footer
 {
     grid-area: footer;
@@ -846,7 +835,6 @@ form > input[type=submit]:hover
 .infos *
 {
     text-align: left;
-    font-size: 24px;
 }
 
 .infos i
@@ -854,21 +842,16 @@ form > input[type=submit]:hover
     color: #427AA1;
 }
 
-.title
-{
-    font-size: 28px;
-}
-
 .contacts
 {
-    width: 260px;
+    width: 200px;
     display: flex;
     justify-content: space-between;
 }
 
 .contacts a
 {
-    font-size: 70px;
+    font-size: 3rem;
     color: #659ABD;
     transition: all 500ms;
 }
@@ -885,19 +868,18 @@ form > input[type=submit]:hover
     color: #659ABD;
     margin-right: 15px;
     margin-left: 15px;
-    font-size: 30px;
+    font-size: 1.3rem;
     transition: all 500ms;
 }
 
 .liens a:hover
 {
-    font-size: 38px;
+    font-size: 1.6rem;
     color: #ADD4F3;
 }
 
 .horaires
 {
-    font-size: 22px;
     text-align: center;
 }
 
@@ -931,7 +913,6 @@ form > input[type=submit]:hover
     background-color: rgba(255,255,255,70%);
     box-shadow: 0 0 5px rgba(0,0,0,20%);
     font-weight: bold;
-    font-size: 18px;
     border-radius: 10px;
     text-align: center;
 }
@@ -956,6 +937,6 @@ form > input[type=submit]:hover
 
 .colonne h2
 {
-    font-size: 40px;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }

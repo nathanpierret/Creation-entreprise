@@ -83,7 +83,8 @@
                     <button type="submit" name="check"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
                 <?php if (isset($image)) {?>
-                <img src="<?= $image?>" alt="Fiche de poste" class="image3">
+                    <img src="<?= $image?>" alt="Fiche de poste" class="image3">
+                    <a href="<?= $image?>" class="bouton-fiche"><i class="fa-solid fa-file-arrow-down"></i> &nbspTélécharger</a>
                 <?php } ?>
             </div>
         </div>

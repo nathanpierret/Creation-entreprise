@@ -1,23 +1,3 @@
-<?php
-    session_start();
-    require_once "src/modele/produit-db.php";
-    require_once "src/modele/choix-db.php";
-    require_once "src/modele/variantes-db.php";
-    require_once "src/modele/couleur-db.php";
-
-    $id = null;
-    $erreur = null;
-
-    if (!empty($_GET['id'])) {
-        $id = $_GET['id'];
-    } else {
-        $erreur = "URL demandée non valide";
-    }
-
-    $deChoisi = selectProductById($id);
-    $quantite = selectQuantityFromProductId($id);
-?>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -33,9 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Détails sur le produit</title>
+    <title>Notre entreprise</title>
 </head>
 <body>
+
 <div class="container">
     <div class="nav">
         <img src="images/Logo.png" alt="Logo">
@@ -46,35 +27,11 @@
             <li><a href="contacts.php">Contactez-nous</a></li>
         </ul>
     </div>
-
-    <div class="content2">
-        <?php if (isset($erreur)) { ?>
-            <div class="erreur">Erreur : <?= $erreur?></div>
-        <?php } else { ?>
-            <div class="carte-detail">
-                <img src="images/<?= $deChoisi["lib_photo"]?>" alt="Photo de dé à 20 faces" class="image4">
-                <div class="nom-article2">
-                    <div><?= $deChoisi["nom_prod"]?></div>
-                </div>
-                <div class="prix-achat2">
-                    <div><?= $deChoisi["prix_prod"]?> €</div>
-                </div>
-                <div class="description-rapide2">
-                    <div><?= $deChoisi["description"]?></div>
-                </div>
-                <div class="stock-commande">
-                    <?php if ($quantite > 0) { ?>
-                        <div class="vert">En stock</div>
-                    <?php } else { ?>
-                        <div class="rouge">Indisponible</div>
-                    <?php } ?>
-                    <a href="commande.php?id=<?=$id?>" class="bouton-commande">Commander</a>
-                </div>
-                <a href="produits.php" class="bouton-retour">Retour aux produits</a>
-            </div>
-        <?php } ?>
+    <div class="background">
+        <div class="content2">
+            <h2 class="title2">Votre panier</h2>
+        </div>
     </div>
-
     <footer class="footer">
         <div>
             <div><i class="fa-regular fa-copyright"></i> Paradice, Inc.</div>
@@ -100,5 +57,6 @@
         </div>
     </footer>
 </div>
+
 </body>
 </html>
