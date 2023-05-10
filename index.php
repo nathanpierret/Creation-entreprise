@@ -3,7 +3,7 @@
 
     $de6 = selectProductById(6);
     $de20 = selectProductById(20);
-    $varAll = selectProductById(900);
+    $varAll = selectProductById(905);
 ?>
 
 <!doctype html>

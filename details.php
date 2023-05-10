@@ -2,20 +2,37 @@
     session_start();
     require_once "src/modele/produit-db.php";
     require_once "src/modele/choix-db.php";
-    require_once "src/modele/variantes-db.php";
     require_once "src/modele/couleur-db.php";
 
     $id = null;
-    $erreur = null;
+    $couleurChoisie = null;
+    $couleurNull = null;
+    $quantiteMax = 0;
+    $erreurURL = null;
+    $erreurs = [];
 
     if (!empty($_GET['id'])) {
         $id = $_GET['id'];
     } else {
-        $erreur = "URL demandée non valide";
+        $erreurURL = "URL demandée non valide";
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["couleur-choix"])) {
+            $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur"]);
+        } else if (isset($_POST["ajout-panier"])) {
+            var_dump($_POST);
+            if (!isset($_POST["couleur2"])) {
+                $erreurs["couleur"] = "Choisissez une couleur !";
+            } else {
+                $couleurChoisie = $_POST["couleur2"];
+            }
+
+        }
     }
 
     $deChoisi = selectProductById($id);
-    $quantite = selectQuantityFromProductId($id);
+    $couleurs = selectAllColorsIdFromProductId($id);
 ?>
 
 <!doctype html>
@@ -48,8 +65,8 @@
     </div>
 
     <div class="content2">
-        <?php if (isset($erreur)) { ?>
-            <div class="erreur">Erreur : <?= $erreur?></div>
+        <?php if (isset($erreurURL)) { ?>
+            <div class="erreur">Erreur : <?= $erreurURL?></div>
         <?php } else { ?>
             <div class="carte-detail">
                 <img src="images/<?= $deChoisi["lib_photo"]?>" alt="Photo de dé à 20 faces" class="image4">
@@ -62,14 +79,27 @@
                 <div class="description-rapide2">
                     <div><?= $deChoisi["description"]?></div>
                 </div>
-                <div class="stock-commande">
-                    <?php if ($quantite > 0) { ?>
-                        <div class="vert">En stock</div>
-                    <?php } else { ?>
-                        <div class="rouge">Indisponible</div>
+                <form method="post" class="choix-couleur">
+                    <select name="couleur" id="couleur">
+                        <option value="" disabled selected>Choisissez une couleur</option>
+                        <?php foreach ($couleurs as $couleur) { ?>
+                        <option value="<?= $couleur["id_couleur"] ?>"
+                            <?php if (isset($_POST["couleur"]) && $_POST["couleur"] == $couleur["id_couleur"]) {?> selected <?php }?>>
+                            <?= selectColorById($couleur["id_couleur"])["nom_couleur"] ?></option>
+                        <?php } ?>
+                    </select>
+                    <input type="submit" value="Choisir" name="couleur-choix">
+                </form>
+                <form method="post" class="choix-produit">
+                    <input type="hidden" name="couleur2" value="<?php if (isset($_POST["couleur"])) { echo $_POST["couleur"]; } else { echo $couleurNull; }?>">
+
+                    <?php if (isset($erreurs["couleur"])) {?>
+                        <p class="erreur-validation"><?= $erreurs["couleur"] ?></p>
                     <?php } ?>
-                    <a href="commande.php?id=<?=$id?>" class="bouton-commande">Commander</a>
-                </div>
+
+                    <input type="number" max="<?= $quantiteMax["qte_stock"] ?>" min="1" name="quantite" value="1">
+                    <input type="submit" value="Ajouter au panier" name="ajout-panier">
+                </form>
                 <a href="produits.php" class="bouton-retour">Retour aux produits</a>
             </div>
         <?php } ?>
