@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION["panier"])) {
+        //Création du panier dans la session
+        $_SESSION["panier"] = [];
+    }
+
     require_once "src/modele/produit-db.php";
     require_once "src/modele/choix-db.php";
     require_once "src/modele/couleur-db.php";
@@ -17,22 +23,72 @@
         $erreurURL = "URL demandée non valide";
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["couleur-choix"])) {
-            $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur"]);
-        } else if (isset($_POST["ajout-panier"])) {
-            var_dump($_POST);
-            if (!isset($_POST["couleur2"])) {
-                $erreurs["couleur"] = "Choisissez une couleur !";
-            } else {
-                $couleurChoisie = $_POST["couleur2"];
-            }
+    $deChoisi = selectProductById($id);
+    $couleurs = selectAllColorsIdFromProductId($id);
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($id < 900) {
+            if (isset($_POST["couleur-choix"])) {
+                if (!isset($_POST["couleur"])) {
+                    $erreurs["couleur"] = "Choisissez une couleur !";
+                } else {
+                    $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur"]);
+                }
+            } else if (isset($_POST["ajout-panier"])) {
+                if (!isset($_POST["couleur2"])) {
+                    $erreurs["couleur"] = "Choisissez une couleur !";
+                } else {
+                    $nomProduit = $deChoisi["nom_prod"];
+                    $photoProduit = $deChoisi["lib_photo"];
+                    $prixProduit = $deChoisi["prix_prod"];
+                    $couleurChoisie = $_POST["couleur2"];
+                    $qteChoisie = $_POST["quantite"];
+                    $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur2"]);
+                    if (array_key_exists($nomProduit,$_SESSION["panier"]) and $_SESSION["panier"]["couleur"] == $couleurChoisie) {
+                        //Le produit est déjà présent
+                        $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
+                    } else {
+                        //Le produit n'est pas présent
+                        //Il faut créer le produit
+                        $produit = [
+                            "photo" => $photoProduit,
+                            "nom" => $nomProduit,
+                            "couleur" => $couleurChoisie,
+                            "prix" => $prixProduit,
+                            "quantite" => $qteChoisie,
+                            "max" => $quantiteMax
+                        ];
+                        //Ajout du produit dans le panier
+                        $_SESSION["panier"][$nomProduit] = $produit;
+                    }
+                }
+            }
+        } else {
+            $nomProduit = $deChoisi["nom_prod"];
+            $photoProduit = $deChoisi["lib_photo"];
+            $prixProduit = $deChoisi["prix_prod"];
+            $qteChoisie = $_POST["quantite"];
+            $quantiteMax = selectQuantityFromAllIds($id,1);
+            if (array_key_exists($nomProduit,$_SESSION["panier"])) {
+                //Le produit est déjà présent
+                $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
+            } else {
+                //Le produit n'est pas présent
+                //Il faut créer le produit
+                $produit = [
+                    "photo" => $photoProduit,
+                    "nom" => $nomProduit,
+                    "couleur" => "---",
+                    "prix" => $prixProduit,
+                    "quantite" => $qteChoisie,
+                    "max" => $quantiteMax
+                ];
+                //Ajout du produit dans le panier
+                $_SESSION["panier"][$nomProduit] = $produit;
+            }
         }
     }
 
-    $deChoisi = selectProductById($id);
-    $couleurs = selectAllColorsIdFromProductId($id);
 ?>
 
 <!doctype html>
@@ -62,6 +118,7 @@
             <li><a href="produits.php">Nos produits</a></li>
             <li><a href="contacts.php">Contactez-nous</a></li>
         </ul>
+        <a href="panier.php" class="bouton-panier"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
 
     <div class="content2">
@@ -79,6 +136,7 @@
                 <div class="description-rapide2">
                     <div><?= $deChoisi["description"]?></div>
                 </div>
+                <?php if ($id < 900) { ?>
                 <form method="post" class="choix-couleur">
                     <select name="couleur" id="couleur">
                         <option value="" disabled selected>Choisissez une couleur</option>
@@ -90,16 +148,22 @@
                     </select>
                     <input type="submit" value="Choisir" name="couleur-choix">
                 </form>
+
+                <?php if (isset($erreurs["couleur"])) {?>
+                    <p class="erreur-validation"><?= $erreurs["couleur"] ?></p>
+                <?php } ?>
+
                 <form method="post" class="choix-produit">
                     <input type="hidden" name="couleur2" value="<?php if (isset($_POST["couleur"])) { echo $_POST["couleur"]; } else { echo $couleurNull; }?>">
-
-                    <?php if (isset($erreurs["couleur"])) {?>
-                        <p class="erreur-validation"><?= $erreurs["couleur"] ?></p>
-                    <?php } ?>
-
                     <input type="number" max="<?= $quantiteMax["qte_stock"] ?>" min="1" name="quantite" value="1">
-                    <input type="submit" value="Ajouter au panier" name="ajout-panier">
+                    <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
                 </form>
+                <?php } else { ?>
+                <form method="post" class="choix-pack">
+                    <input type="number" max="" min="1" name="quantite" value="1">
+                    <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
+                </form>
+                <?php } ?>
                 <a href="produits.php" class="bouton-retour">Retour aux produits</a>
             </div>
         <?php } ?>
@@ -118,7 +182,7 @@
         <div class="liens">
             <a href="entreprise.php">Notre entreprise</a>
             <a href="contacts.php">Contacts</a>
-            <a href="#">Politique de confidentialité</a>
+            <a href="Mentions%20légales%20et%20politique%20de%20confidentialité.pdf">Politique de confidentialité</a>
         </div>
 
         <div class="infos">

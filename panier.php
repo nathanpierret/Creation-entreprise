@@ -1,3 +1,24 @@
+<?php
+    session_start();
+
+    require_once "src/modele/couleur-db.php";
+
+    if (!isset($_SESSION["panier"])) {
+        //Création du panier dans la session
+        $_SESSION["panier"] = [];
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+        if (isset($_POST["btn-modifier"])) {
+            $_SESSION["panier"][$_POST["nom-produit"]]["quantite"] = $_POST["quantite"];
+        } else if (isset($_POST["btn-supprimer"])) {
+            unset($_SESSION["panier"][$_POST["nom-produit"]]);
+        } else if (isset($_POST["btn-vider"])) {
+            $_SESSION["panier"] = [];
+        }
+    }
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -26,10 +47,68 @@
             <li><a href="produits.php">Nos produits</a></li>
             <li><a href="contacts.php">Contactez-nous</a></li>
         </ul>
+        <a href="panier.php" class="bouton-panier"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
     <div class="background">
         <div class="content2">
-            <h2 class="title2">Votre panier</h2>
+            <h1 class="title3">Votre panier</h1>
+            <table class="Table">
+                <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Couleur</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="4" class="total">Total</td>
+                    <td class="prix-total"><?php $total = 0;
+                        foreach ($_SESSION["panier"] as $produit) {
+                            $total += $produit["prix"]*$produit["quantite"];
+                        }
+                        echo $total;
+                        ?> €</td>
+                    <td>
+                        <form method="post" class="Suppr">
+                            <input type="hidden" name="type-form" value="Vider">
+                            <input type="submit" name="btn-vider" value="Vider le panier">
+                        </form>
+                    </td>
+                </tr>
+                </tfoot>
+                <tbody>
+                <?php foreach ($_SESSION["panier"] as $produit) {?>
+                    <tr>
+                        <td><img src="images/<?=$produit["photo"]?>" alt="Photo de <?=$produit["nom"] ?>" class="photo-produit">
+                            <div class="nom-produit"><?= $produit["nom"]?></div></td>
+                        <td class="td2"><?php if ($produit["couleur"] == "---") {echo $produit["couleur"]; } else { $couleur = selectColorById($produit["couleur"]); echo $couleur["nom_couleur"]; }?></td>
+                        <td><?= $produit["prix"]?> €</td>
+                        <td class="td3">
+                            <form method="post">
+                                <input type="hidden" name="nom-produit" value="<?= $produit["nom"]?>">
+                                <input type="number" name="quantite" min="1" max="<?= $produit["max"]["qte_stock"] ?>" value="<?= $produit["quantite"]?>">
+                                <input type="submit" name="btn-modifier" value="Modifier">
+                            </form>
+                        </td>
+                        <td><?= $produit["prix"]*$produit["quantite"]?> €</td>
+                        <td>
+                            <form method="post" class="Suppr">
+                                <input type="hidden" name="nom-produit" value="<?= $produit["nom"]?>">
+                                <input type="submit" name="btn-supprimer" value="Supprimer">
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+            <div class="Boutons">
+                <a href="produits.php" class="Bouton">Continuer mes achats</a>
+                <a href="commande.php" class="Bouton">Passer ma commande</a>
+            </div>
         </div>
     </div>
     <footer class="footer">
@@ -45,7 +124,7 @@
         <div class="liens">
             <a href="entreprise.php">Notre entreprise</a>
             <a href="contacts.php">Contacts</a>
-            <a href="#">Politique de confidentialité</a>
+            <a href="Mentions%20légales%20et%20politique%20de%20confidentialité.pdf">Politique de confidentialité</a>
         </div>
 
         <div class="infos">

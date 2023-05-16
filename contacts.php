@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION["panier"])) {
+        //Création du panier dans la session
+        $_SESSION["panier"] = [];
+    }
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -25,6 +34,7 @@
             <li><a href="produits.php">Nos produits</a></li>
             <li><a href="contacts.php">Contactez-nous</a></li>
         </ul>
+        <a href="panier.php" class="bouton-panier"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
     <div class="background">
     <div class="content3">
@@ -92,7 +102,7 @@
         <div class="liens">
             <a href="entreprise.php">Notre entreprise</a>
             <a href="contacts.php">Contacts</a>
-            <a href="#">Politique de confidentialité</a>
+            <a href="Mentions%20légales%20et%20politique%20de%20confidentialité.pdf">Politique de confidentialité</a>
         </div>
 
         <div class="infos">
