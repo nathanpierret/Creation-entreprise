@@ -22,3 +22,13 @@ function selectAllColorsIdFromProductId (int $productId) : array {
     $couleurs = $requete->fetchAll(PDO::FETCH_ASSOC);
     return $couleurs;
 }
+
+function updateQuantityFromAllIdsAndProdQuantity (int $productId, int $colorId, int $qteProd): void {
+    $connexion = createConnection();
+    $requeteSQL = "UPDATE choix SET qte_stock = qte_stock - :qteProd WHERE id_prod = :idProd AND id_couleur = :idCouleur";
+    $requete = $connexion->prepare($requeteSQL);
+    $requete->bindValue(":qteProd",$qteProd);
+    $requete->bindValue(":idProd",$productId);
+    $requete->bindValue(":idCouleur",$colorId);
+    $requete->execute();
+}
