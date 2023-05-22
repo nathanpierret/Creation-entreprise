@@ -1073,3 +1073,46 @@ form > input[type=submit]:hover {
 {
     font-size: 1.3rem;
 }
+
+.devis
+{
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.devis > *
+{
+    font-family: 'Nunito', cursive;
+    font-size: 1.2rem;
+}
+
+.title-devis
+{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #284E7B;
+}
+
+.nom-client, .email-client, .telephone-client
+{
+    font-size: 1.5rem;
+    color: #1C6EA4;
+}
+
+.telephone-client
+{
+    margin-bottom: 30px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.info-devis
+{
+    font-size: 1rem;
+    margin-top: 30px;
+    border-top: 2px solid black;
+}
