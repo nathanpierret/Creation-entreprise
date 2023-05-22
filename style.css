@@ -1,12 +1,10 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container
-{
+.container {
     height: 100vh;
     margin: 0 auto;
     display: grid;
@@ -16,15 +14,13 @@
                          "footer";
 }
 
-.container > *
-{
+.container > * {
     padding: 20px;
     font-size: 1.2rem;
     font-family: 'Nunito', cursive;
 }
 
-.nav
-{
+.nav {
     grid-area: nav;
     background-color: #8F908D;
     display: grid;
@@ -34,8 +30,7 @@
     text-align: center;
 }
 
-.nav > ul
-{
+.nav > ul {
     width: 800px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -45,20 +40,17 @@
     font-size: 1.5rem;
 }
 
-li > a
-{
+li > a {
     text-decoration: none;
     color: #284E7B;
     transition: all 500ms;
 }
 
-li > a:hover
-{
+li > a:hover {
     color: #ADD4F3;
 }
 
-.content
-{
+.content {
     grid-area: content;
     display: grid;
     width: 100%;
@@ -76,98 +68,88 @@ li > a:hover
     margin-bottom: 10px;
 }
 
-.background
-{
-    background-image: linear-gradient(158deg, rgba(84, 84, 84, 0.03) 0%, rgba(84, 84, 84, 0.03) 20%,rgba(219, 219, 219, 0.03) 20%,
-    rgba(219, 219, 219, 0.03) 40%,rgba(54, 54, 54, 0.03) 40%, rgba(54, 54, 54, 0.03) 60%,rgba(99, 99, 99, 0.03) 60%,
-    rgba(99, 99, 99, 0.03) 80%,rgba(92, 92, 92, 0.03) 80%, rgba(92, 92, 92, 0.03) 100%),
-    linear-gradient(45deg, rgba(221, 221, 221, 0.02) 0%, rgba(221, 221, 221, 0.02) 14.286%,rgba(8, 8, 8, 0.02) 14.286%,
-            rgba(8, 8, 8, 0.02) 28.572%,rgba(52, 52, 52, 0.02) 28.572%, rgba(52, 52, 52, 0.02) 42.858%,rgba(234, 234, 234, 0.02) 42.858%,
-            rgba(234, 234, 234, 0.02) 57.144%,rgba(81, 81, 81, 0.02) 57.144%, rgba(81, 81, 81, 0.02) 71.42999999999999%,
-            rgba(239, 239, 239, 0.02) 71.43%, rgba(239, 239, 239, 0.02) 85.71600000000001%,rgba(187, 187, 187, 0.02) 85.716%,
-            rgba(187, 187, 187, 0.02) 100.002%),linear-gradient(109deg, rgba(33, 33, 33, 0.03) 0%, rgba(33, 33, 33, 0.03) 12.5%,
-            rgba(147, 147, 147, 0.03) 12.5%, rgba(147, 147, 147, 0.03) 25%,rgba(131, 131, 131, 0.03) 25%, rgba(131, 131, 131, 0.03) 37.5%,
-            rgba(151, 151, 151, 0.03) 37.5%, rgba(151, 151, 151, 0.03) 50%,rgba(211, 211, 211, 0.03) 50%, rgba(211, 211, 211, 0.03) 62.5%,
-            rgba(39, 39, 39, 0.03) 62.5%, rgba(39, 39, 39, 0.03) 75%,rgba(55, 55, 55, 0.03) 75%, rgba(55, 55, 55, 0.03) 87.5%,
-            rgba(82, 82, 82, 0.03) 87.5%, rgba(82, 82, 82, 0.03) 100%),linear-gradient(348deg, rgba(42, 42, 42, 0.02) 0%,
-            rgba(42, 42, 42, 0.02) 20%,rgba(8, 8, 8, 0.02) 20%, rgba(8, 8, 8, 0.02) 40%,rgba(242, 242, 242, 0.02) 40%,
-            rgba(242, 242, 242, 0.02) 60%,rgba(42, 42, 42, 0.02) 60%, rgba(42, 42, 42, 0.02) 80%,rgba(80, 80, 80, 0.02) 80%,
-            rgba(80, 80, 80, 0.02) 100%),linear-gradient(120deg, rgba(106, 106, 106, 0.03) 0%, rgba(106, 106, 106, 0.03) 14.286%,
-            rgba(67, 67, 67, 0.03) 14.286%, rgba(67, 67, 67, 0.03) 28.572%,rgba(134, 134, 134, 0.03) 28.572%,
-            rgba(134, 134, 134, 0.03) 42.858%,rgba(19, 19, 19, 0.03) 42.858%, rgba(19, 19, 19, 0.03) 57.144%,
-            rgba(101, 101, 101, 0.03) 57.144%, rgba(101, 101, 101, 0.03) 71.42999999999999%,rgba(205, 205, 205, 0.03) 71.43%,
-            rgba(205, 205, 205, 0.03) 85.71600000000001%,rgba(53, 53, 53, 0.03) 85.716%, rgba(53, 53, 53, 0.03) 100.002%),
-    linear-gradient(45deg, rgba(214, 214, 214, 0.03) 0%, rgba(214, 214, 214, 0.03) 16.667%,rgba(255, 255, 255, 0.03) 16.667%,
-            rgba(255, 255, 255, 0.03) 33.334%,rgba(250, 250, 250, 0.03) 33.334%, rgba(250, 250, 250, 0.03) 50.001000000000005%,
-            rgba(231, 231, 231, 0.03) 50.001%, rgba(231, 231, 231, 0.03) 66.668%,rgba(241, 241, 241, 0.03) 66.668%,
-            rgba(241, 241, 241, 0.03) 83.33500000000001%,rgba(31, 31, 31, 0.03) 83.335%, rgba(31, 31, 31, 0.03) 100.002%),
-    linear-gradient(59deg, rgba(224, 224, 224, 0.03) 0%, rgba(224, 224, 224, 0.03) 12.5%,rgba(97, 97, 97, 0.03) 12.5%,
-            rgba(97, 97, 97, 0.03) 25%,rgba(143, 143, 143, 0.03) 25%, rgba(143, 143, 143, 0.03) 37.5%,rgba(110, 110, 110, 0.03) 37.5%,
-            rgba(110, 110, 110, 0.03) 50%,rgba(34, 34, 34, 0.03) 50%, rgba(34, 34, 34, 0.03) 62.5%,rgba(155, 155, 155, 0.03) 62.5%,
-            rgba(155, 155, 155, 0.03) 75%,rgba(249, 249, 249, 0.03) 75%, rgba(249, 249, 249, 0.03) 87.5%,rgba(179, 179, 179, 0.03) 87.5%,
-            rgba(179, 179, 179, 0.03) 100%),linear-gradient(241deg, rgba(58, 58, 58, 0.02) 0%, rgba(58, 58, 58, 0.02) 25%,
-            rgba(124, 124, 124, 0.02) 25%, rgba(124, 124, 124, 0.02) 50%,rgba(254, 254, 254, 0.02) 50%, rgba(254, 254, 254, 0.02) 75%,
-            rgba(52, 52, 52, 0.02) 75%, rgba(52, 52, 52, 0.02) 100%),linear-gradient(90deg, #ffffff,#ffffff);
+.background {
+    background-image: linear-gradient(158deg, rgba(84, 84, 84, 0.03) 0%, rgba(84, 84, 84, 0.03) 20%, rgba(219, 219, 219, 0.03) 20%,
+    rgba(219, 219, 219, 0.03) 40%, rgba(54, 54, 54, 0.03) 40%, rgba(54, 54, 54, 0.03) 60%, rgba(99, 99, 99, 0.03) 60%,
+    rgba(99, 99, 99, 0.03) 80%, rgba(92, 92, 92, 0.03) 80%, rgba(92, 92, 92, 0.03) 100%),
+    linear-gradient(45deg, rgba(221, 221, 221, 0.02) 0%, rgba(221, 221, 221, 0.02) 14.286%, rgba(8, 8, 8, 0.02) 14.286%,
+            rgba(8, 8, 8, 0.02) 28.572%, rgba(52, 52, 52, 0.02) 28.572%, rgba(52, 52, 52, 0.02) 42.858%, rgba(234, 234, 234, 0.02) 42.858%,
+            rgba(234, 234, 234, 0.02) 57.144%, rgba(81, 81, 81, 0.02) 57.144%, rgba(81, 81, 81, 0.02) 71.42999999999999%,
+            rgba(239, 239, 239, 0.02) 71.43%, rgba(239, 239, 239, 0.02) 85.71600000000001%, rgba(187, 187, 187, 0.02) 85.716%,
+            rgba(187, 187, 187, 0.02) 100.002%), linear-gradient(109deg, rgba(33, 33, 33, 0.03) 0%, rgba(33, 33, 33, 0.03) 12.5%,
+            rgba(147, 147, 147, 0.03) 12.5%, rgba(147, 147, 147, 0.03) 25%, rgba(131, 131, 131, 0.03) 25%, rgba(131, 131, 131, 0.03) 37.5%,
+            rgba(151, 151, 151, 0.03) 37.5%, rgba(151, 151, 151, 0.03) 50%, rgba(211, 211, 211, 0.03) 50%, rgba(211, 211, 211, 0.03) 62.5%,
+            rgba(39, 39, 39, 0.03) 62.5%, rgba(39, 39, 39, 0.03) 75%, rgba(55, 55, 55, 0.03) 75%, rgba(55, 55, 55, 0.03) 87.5%,
+            rgba(82, 82, 82, 0.03) 87.5%, rgba(82, 82, 82, 0.03) 100%), linear-gradient(348deg, rgba(42, 42, 42, 0.02) 0%,
+            rgba(42, 42, 42, 0.02) 20%, rgba(8, 8, 8, 0.02) 20%, rgba(8, 8, 8, 0.02) 40%, rgba(242, 242, 242, 0.02) 40%,
+            rgba(242, 242, 242, 0.02) 60%, rgba(42, 42, 42, 0.02) 60%, rgba(42, 42, 42, 0.02) 80%, rgba(80, 80, 80, 0.02) 80%,
+            rgba(80, 80, 80, 0.02) 100%), linear-gradient(120deg, rgba(106, 106, 106, 0.03) 0%, rgba(106, 106, 106, 0.03) 14.286%,
+            rgba(67, 67, 67, 0.03) 14.286%, rgba(67, 67, 67, 0.03) 28.572%, rgba(134, 134, 134, 0.03) 28.572%,
+            rgba(134, 134, 134, 0.03) 42.858%, rgba(19, 19, 19, 0.03) 42.858%, rgba(19, 19, 19, 0.03) 57.144%,
+            rgba(101, 101, 101, 0.03) 57.144%, rgba(101, 101, 101, 0.03) 71.42999999999999%, rgba(205, 205, 205, 0.03) 71.43%,
+            rgba(205, 205, 205, 0.03) 85.71600000000001%, rgba(53, 53, 53, 0.03) 85.716%, rgba(53, 53, 53, 0.03) 100.002%),
+    linear-gradient(45deg, rgba(214, 214, 214, 0.03) 0%, rgba(214, 214, 214, 0.03) 16.667%, rgba(255, 255, 255, 0.03) 16.667%,
+            rgba(255, 255, 255, 0.03) 33.334%, rgba(250, 250, 250, 0.03) 33.334%, rgba(250, 250, 250, 0.03) 50.001000000000005%,
+            rgba(231, 231, 231, 0.03) 50.001%, rgba(231, 231, 231, 0.03) 66.668%, rgba(241, 241, 241, 0.03) 66.668%,
+            rgba(241, 241, 241, 0.03) 83.33500000000001%, rgba(31, 31, 31, 0.03) 83.335%, rgba(31, 31, 31, 0.03) 100.002%),
+    linear-gradient(59deg, rgba(224, 224, 224, 0.03) 0%, rgba(224, 224, 224, 0.03) 12.5%, rgba(97, 97, 97, 0.03) 12.5%,
+            rgba(97, 97, 97, 0.03) 25%, rgba(143, 143, 143, 0.03) 25%, rgba(143, 143, 143, 0.03) 37.5%, rgba(110, 110, 110, 0.03) 37.5%,
+            rgba(110, 110, 110, 0.03) 50%, rgba(34, 34, 34, 0.03) 50%, rgba(34, 34, 34, 0.03) 62.5%, rgba(155, 155, 155, 0.03) 62.5%,
+            rgba(155, 155, 155, 0.03) 75%, rgba(249, 249, 249, 0.03) 75%, rgba(249, 249, 249, 0.03) 87.5%, rgba(179, 179, 179, 0.03) 87.5%,
+            rgba(179, 179, 179, 0.03) 100%), linear-gradient(241deg, rgba(58, 58, 58, 0.02) 0%, rgba(58, 58, 58, 0.02) 25%,
+            rgba(124, 124, 124, 0.02) 25%, rgba(124, 124, 124, 0.02) 50%, rgba(254, 254, 254, 0.02) 50%, rgba(254, 254, 254, 0.02) 75%,
+            rgba(52, 52, 52, 0.02) 75%, rgba(52, 52, 52, 0.02) 100%), linear-gradient(90deg, #ffffff, #ffffff);
 }
 
-.content2
-{
+.content2 {
     width: 90%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 
-.content2 > *
-{
+.content2 > * {
     margin-bottom: 40px;
 }
 
-.content3
-{
+.content3 {
     width: 90%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 
-.content3 > div
-{
+.content3 > div {
     display: flex;
 }
 
-.content3 > *
-{
+.content3 > * {
     margin-bottom: 40px;
 }
 
-.cartes
-{
+.cartes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,0.25fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
     grid-gap: 25px;
 }
 
-.carte2
-{
+.carte2 {
     display: grid;
     align-self: center;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 200px 40px 40px 120px 50px;
     border-radius: 10px;
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
-    background-color: rgba(239,243,245,60%);
+    background-color: rgba(239, 243, 245, 60%);
     transition: all 500ms;
 }
 
-.carte2:hover
-{
+.carte2:hover {
     transform: scale(1.06);
 }
 
-.bouton-achat3
-{
+.bouton-achat3 {
     grid-row: 5 / 6;
     background-color: #659ABD;
     text-decoration: none;
@@ -180,41 +162,34 @@ li > a:hover
 }
 
 
-.bouton-achat3:hover, .bouton-achat4:hover
-{
+.bouton-achat3:hover, .bouton-achat4:hover {
     background-color: #ADD4F3;
     color: #659ABD;
 }
 
-.contacter
-{
+.contacter {
     margin-left: 30px;
 }
 
-.ul
-{
+.ul {
     margin-bottom: 30px;
 }
 
-.ul > li
-{
+.ul > li {
     list-style-type: none;
     margin-left: 70px;
     color: #284E7B;
 }
 
-.ul li span
-{
+.ul li span {
     color: #659ABD;
 }
 
-.ul li span:hover
-{
+.ul li span:hover {
     color: #284E7B;
 }
 
-.ul2
-{
+.ul2 {
     width: 70%;
     list-style-type: none;
     text-align: justify;
@@ -227,44 +202,38 @@ li > a:hover
     transition: all 500ms;
 }
 
-.ul2 > li
-{
+.ul2 > li {
     margin-bottom: 10px;
 }
 
-form
-{
+form {
     width: 80%;
     margin: 10px auto;
     display: grid;
-    grid-template-columns: repeat(2,40%);
+    grid-template-columns: repeat(2, 40%);
     grid-column-gap: 30px;
 }
 
-form > *
-{
+form > * {
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
-form > label
-{
+form > label {
     font-weight: bold;
 }
 
-form > input, select
-{
+form > input, select {
     display: block;
     width: 100%;
     padding: 12px;
     border: 1px solid #427AA1;
     border-radius: 5px;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 5px 5px 5px #284E7B;
 }
 
-.fiches
-{
+.fiches {
     display: grid;
     width: 100%;
     margin: 0 auto 10px;
@@ -273,8 +242,7 @@ form > input, select
     justify-content: center;
 }
 
-.fiches > button
-{
+.fiches > button {
     background: #284E7B;
     color: #ADD4F3;
     font-weight: bold;
@@ -282,19 +250,17 @@ form > input, select
     border-radius: 5px;
     cursor: pointer;
     transition: all 700ms;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 0 3px 2px 3px #659ABD;
 }
 
-.fiches > button:hover
-{
+.fiches > button:hover {
     background: #ADD4F3;
     color: #284E7B;
     transform: scale(1.07);
 }
 
-.bouton-fiche
-{
+.bouton-fiche {
     text-decoration: none;
     color: white;
     background-color: #427AA1;
@@ -308,15 +274,13 @@ form > input, select
     transition: all 700ms;
 }
 
-.bouton-fiche:hover
-{
+.bouton-fiche:hover {
     color: black;
     background-color: #ADD4F3;
     transform: scale(1.10);
 }
 
-.image3
-{
+.image3 {
     width: 75%;
     margin: 0 auto;
     border-radius: 20px;
@@ -325,13 +289,11 @@ form > input, select
     transition: all 500ms;
 }
 
-.message
-{
+.message {
     grid-column: 1 / 3;
 }
 
-form > textarea
-{
+form > textarea {
     grid-column: 1 / 3;
     display: block;
     width: 100%;
@@ -339,12 +301,11 @@ form > textarea
     border: 1px solid #427AA1;
     border-radius: 5px;
     resize: none;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 5px 5px 5px #284E7B;
 }
 
-form > input[type=submit]
-{
+form > input[type=submit] {
     width: 100%;
     justify-self: center;
     background: #284E7B;
@@ -355,19 +316,17 @@ form > input[type=submit]
     border-radius: 5px;
     cursor: pointer;
     transition: all 700ms;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 0 3px 2px 3px #659ABD;
 }
 
-form > input[type=submit]:hover
-{
+form > input[type=submit]:hover {
     background: #ADD4F3;
     color: #284E7B;
     transform: scale(1.07);
 }
 
-.erreur-validation
-{
+.erreur-validation {
     grid-row: 6 / 7;
     grid-column: 1 / 3;
     color: #8F908D;
@@ -377,13 +336,20 @@ form > input[type=submit]:hover
     text-align: center;
 }
 
-.etoile
+.erreur-validation2
 {
+    color: red;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.etoile {
     color: #284E7B;
 }
 
-.titre
-{
+.titre {
     font-family: 'Kanit', sans-serif;
     font-size: 2.5rem;
     grid-area: titre;
@@ -392,13 +358,11 @@ form > input[type=submit]:hover
     color: #659ABD;
 }
 
-.vide1
-{
+.vide1 {
     grid-area: vide1;
 }
 
-.title2
-{
+.title2 {
     font-family: 'Kanit', sans-serif;
     font-size: 2.5rem;
     justify-self: center;
@@ -406,8 +370,7 @@ form > input[type=submit]:hover
     color: #659ABD;
 }
 
-.image2
-{
+.image2 {
     width: 100%;
     margin: 0 auto 30px;
     border-radius: 20px;
@@ -416,14 +379,12 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.flex-postes
-{
+.flex-postes {
     display: flex;
     justify-content: space-between;
 }
 
-.bouton3
-{
+.bouton3 {
     padding: 15px;
     background-color: #659ABD;
     border-radius: 20px;
@@ -432,25 +393,22 @@ form > input[type=submit]:hover
     cursor: pointer;
 }
 
-.bouton3:hover
-{
+.bouton3:hover {
     background-color: #ADD4F3;
     color: #284E7B;
 }
 
-.vide
-{
+.vide {
     grid-area: vide;
 }
 
-.paragraphe1
-{
+.paragraphe1 {
     grid-area: texte;
     width: 80%;
     justify-self: center;
     align-self: center;
     text-align: justify;
-    background-color: rgba(239,243,245,20%);
+    background-color: rgba(239, 243, 245, 20%);
     padding: 20px;
     border-radius: 20px;
     border: #ADD4F3 2px dashed;
@@ -458,13 +416,12 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.paragraphe
-{
+.paragraphe {
     width: 80%;
     justify-self: center;
     align-self: center;
     text-align: justify;
-    background-color: rgba(239,243,245,20%);
+    background-color: rgba(239, 243, 245, 20%);
     padding: 20px;
     border-radius: 20px;
     border: #ADD4F3 2px dashed;
@@ -472,8 +429,7 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.img1
-{
+.img1 {
     grid-area: image;
     width: 60%;
     justify-self: center;
@@ -484,35 +440,29 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.vide2
-{
+.vide2 {
     grid-area: vide2;
 }
 
-.vide3
-{
+.vide3 {
     grid-area: vide3;
 }
 
-.vide4
-{
+.vide4 {
     grid-area: vide4;
 }
 
-.button1
-{
+.button1 {
     text-decoration: none;
     color: black;
 }
 
-.button2
-{
+.button2 {
     text-decoration: none;
     color: black;
 }
 
-.bouton1
-{
+.bouton1 {
     display: flex;
     grid-area: bouton1;
     background-color: #659ABD;
@@ -530,14 +480,12 @@ form > input[type=submit]:hover
     box-shadow: 0 3px 2px 3px #284E7B;
 }
 
-.bouton1:hover, .bouton2:hover
-{
+.bouton1:hover, .bouton2:hover {
     transform: scale(1.30);
     background-color: #ADD4F3;
 }
 
-.titre2
-{
+.titre2 {
     font-family: 'Kanit', sans-serif;
     font-size: 2.5rem;
     grid-area: titre2;
@@ -546,16 +494,14 @@ form > input[type=submit]:hover
     color: #659ABD;
 }
 
-.grille
-{
+.grille {
     grid-area: grille;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.carte
-{
+.carte {
     display: grid;
     height: 510px;
     align-self: center;
@@ -564,31 +510,28 @@ form > input[type=submit]:hover
     border-radius: 10px;
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
-    background-color: rgba(239,243,245,60%);
+    background-color: rgba(239, 243, 245, 60%);
     transition: all 500ms;
 }
 
-.carte:hover
-{
+.carte:hover {
     transform: scale(1.06);
 }
 
-.carte-detail
-{
+.carte-detail {
     display: grid;
     height: 650px;
     width: 90%;
     margin: 0 auto;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 200px 40px 40px 120px 80px 30px 50px;
     border-radius: 10px;
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
-    background-color: rgba(239,243,245,60%);
+    background-color: rgba(239, 243, 245, 60%);
 }
 
-.image
-{
+.image {
     grid-row: 1 / 2;
     justify-self: center;
     height: 200px;
@@ -597,8 +540,7 @@ form > input[type=submit]:hover
     padding: 10px;
 }
 
-.image4
-{
+.image4 {
     grid-row: 1 / 2;
     grid-column: 1 / 3;
     justify-self: center;
@@ -608,16 +550,14 @@ form > input[type=submit]:hover
     padding: 10px;
 }
 
-.nom-article
-{
+.nom-article {
     grid-row: 2 / 3;
     justify-self: center;
     align-self: center;
     font-size: 1.5rem;
 }
 
-.nom-article2
-{
+.nom-article2 {
     grid-row: 2 / 3;
     grid-column: 1 / 3;
     justify-self: center;
@@ -625,16 +565,14 @@ form > input[type=submit]:hover
     font-size: 2rem;
 }
 
-.prix-achat
-{
+.prix-achat {
     grid-row: 3 / 4;
     justify-self: center;
     align-self: center;
     font-size: 1.3rem;
 }
 
-.prix-achat2
-{
+.prix-achat2 {
     grid-row: 3 / 4;
     grid-column: 1 / 3;
     justify-self: center;
@@ -642,8 +580,7 @@ form > input[type=submit]:hover
     font-size: 1.6rem;
 }
 
-.description-rapide
-{
+.description-rapide {
     grid-row: 4 / 5;
     justify-self: center;
     align-self: center;
@@ -651,8 +588,7 @@ form > input[type=submit]:hover
     text-align: justify;
 }
 
-.description-rapide2
-{
+.description-rapide2 {
     grid-row: 4 / 5;
     grid-column: 1 / 3;
     font-size: 1.4rem;
@@ -662,8 +598,7 @@ form > input[type=submit]:hover
     text-align: justify;
 }
 
-.bouton-achat
-{
+.bouton-achat {
     grid-row: 5 / 6;
     background-color: #659ABD;
     text-decoration: none;
@@ -675,14 +610,12 @@ form > input[type=submit]:hover
     transition: all 700ms;
 }
 
-.bouton-achat:hover
-{
+.bouton-achat:hover {
     background-color: #ADD4F3;
     color: #659ABD;
 }
 
-.choix-couleur
-{
+.choix-couleur {
     grid-row: 5 / 6;
     grid-column: 1 / 2;
     display: flex;
@@ -691,8 +624,7 @@ form > input[type=submit]:hover
     justify-self: center;
 }
 
-.choix-produit button, .choix-pack button
-{
+.choix-produit button, .choix-pack button {
     background: #284E7B;
     color: #ADD4F3;
     font-weight: bold;
@@ -701,31 +633,27 @@ form > input[type=submit]:hover
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 700ms;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 0 3px 2px 3px #659ABD;
 }
 
-.choix-produit button:hover, .choix-pack button:hover
-{
+.choix-produit button:hover, .choix-pack button:hover {
     background: #ADD4F3;
     color: #284E7B;
     transform: scale(1.07);
 }
 
-.rouge
-{
+.rouge {
     color: red;
     align-self: center;
 }
 
-.vert
-{
+.vert {
     color: green;
     align-self: center;
 }
 
-.bouton-retour
-{
+.bouton-retour {
     grid-row: 7 / 8;
     grid-column: 1 / 3;
     background-color: #659ABD;
@@ -738,15 +666,13 @@ form > input[type=submit]:hover
     transition: all 700ms;
 }
 
-.bouton-retour:hover
-{
+.bouton-retour:hover {
     background-color: #ADD4F3;
     color: #659ABD;
     cursor: pointer;
 }
 
-.bouton2
-{
+.bouton2 {
     display: flex;
     grid-area: bouton2;
     background-color: #659ABD;
@@ -764,8 +690,7 @@ form > input[type=submit]:hover
     box-shadow: 0 3px 2px 3px #284E7B;
 }
 
-.titre3
-{
+.titre3 {
     font-family: 'Kanit', sans-serif;
     font-size: 2.5rem;
     grid-area: titre3;
@@ -774,47 +699,41 @@ form > input[type=submit]:hover
     color: #659ABD;
 }
 
-.bulle1
-{
+.bulle1 {
     grid-area: texte1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.gras
-{
+.gras {
     font-weight: bold;
     font-family: 'Kanit', sans-serif;
     font-size: 2.2rem;
     transition: all 400ms;
 }
 
-.gras:hover
-{
+.gras:hover {
     color: #659ABD;
     cursor: default;
 }
 
-.bulle2
-{
+.bulle2 {
     grid-area: texte2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.bulle3
-{
+.bulle3 {
     grid-area: texte3;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.bulle1, .bulle2, .bulle3
-{
-    background-color: rgba(239,243,245,20%);
+.bulle1, .bulle2, .bulle3 {
+    background-color: rgba(239, 243, 245, 20%);
     border-radius: 20px;
     border: #ADD4F3 2px dashed;
     align-self: center;
@@ -824,8 +743,7 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.footer
-{
+.footer {
     grid-area: footer;
     background-color: #284E7B;
     display: flex;
@@ -833,38 +751,32 @@ form > input[type=submit]:hover
     align-items: center;
 }
 
-.infos *
-{
+.infos * {
     text-align: left;
 }
 
-.infos i
-{
+.infos i {
     color: #427AA1;
 }
 
-.contacts
-{
+.contacts {
     width: 200px;
     display: flex;
     justify-content: space-between;
 }
 
-.contacts a
-{
+.contacts a {
     font-size: 3rem;
     color: #659ABD;
     transition: all 500ms;
 }
 
-.contacts a:hover
-{
+.contacts a:hover {
     transform: scale(1.15);
     color: #ADD4F3;
 }
 
-.liens a
-{
+.liens a {
     text-decoration: none;
     color: #659ABD;
     margin-right: 15px;
@@ -873,35 +785,29 @@ form > input[type=submit]:hover
     transition: all 500ms;
 }
 
-.liens a:hover
-{
+.liens a:hover {
     font-size: 1.6rem;
     color: #ADD4F3;
 }
 
-.horaires
-{
+.horaires {
     text-align: center;
 }
 
-.horaires div
-{
+.horaires div {
     margin-bottom: 10px;
 }
 
-.icone
-{
+.icone {
     position: relative;
     display: inline-block;
 }
 
-.icone i
-{
+.icone i {
     color: #427AA1;
 }
 
-.icone .block
-{
+.icone .block {
     display: none;
     position: absolute;
     bottom: 120%;
@@ -911,39 +817,34 @@ form > input[type=submit]:hover
     padding: 13px 20px;
     align-self: center;
     border: 1px solid #427AA1;
-    background-color: rgba(255,255,255,70%);
-    box-shadow: 0 0 5px rgba(0,0,0,20%);
+    background-color: rgba(255, 255, 255, 70%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
     font-weight: bold;
     border-radius: 10px;
     text-align: center;
 }
 
-.icone:hover .block
-{
+.icone:hover .block {
     display: inline-block;
 }
 
-.ligne
-{
+.ligne {
     display: flex;
     align-items: center;
 }
 
-.colonne
-{
+.colonne {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.colonne h2
-{
+.colonne h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-.title3
-{
+.title3 {
     font-size: 2rem;
     text-align: center;
     color: #000;
@@ -969,24 +870,24 @@ form > input[type=submit]:hover
     font-size: 1rem;
 }
 
-.Table tbody .td2
-{
+.Table tbody .td2 {
     width: 10%;
 }
 
-.Table tbody .td3
-{
+.Table tbody .td3 {
     width: 20%;
 }
 
-.Table tbody td form input[type=number]
-{
+.Table tbody .td4 {
+    width: 15%
+}
+
+.Table tbody td form input[type=number] {
     width: 120%;
     margin-right: 5px;
 }
 
-.Table tbody td form input[type=submit]
-{
+.Table tbody td form input[type=submit] {
     transform: scale(1.10);
     background-color: #397ED5;
     color: white;
@@ -997,15 +898,14 @@ form > input[type=submit]:hover
     box-shadow: none;
 }
 
-.Table tbody td form input[type=submit]:hover
-{
+.Table tbody td form input[type=submit]:hover {
     background-color: #1C6EA4;
     cursor: pointer;
 }
 
-.Table tbody td .Suppr input[type=submit]
-{
-    transform: scale(1.10);
+.Table tbody td .Suppr input[type=submit] {
+    width: 80%;
+    margin: 0 auto;
     background-color: crimson;
     color: white;
     border: 0;
@@ -1013,8 +913,7 @@ form > input[type=submit]:hover
     border-radius: 5px;
 }
 
-.Table tbody td .Suppr input[type=submit]:hover
-{
+.Table tbody td .Suppr input[type=submit]:hover {
     background-color: darkred;
     cursor: pointer;
 }
@@ -1036,37 +935,29 @@ form > input[type=submit]:hover
     border-left: none;
 }
 
-.Table tfoot
-{
+.Table tfoot {
     font-size: 1rem;
     font-weight: bold;
     background-color: #CCCDD2;
 }
 
-.Table tfoot td
-{
+.Table tfoot td {
     border-left: 2px solid white;
 }
 
-.Table tfoot .total
-{
+.Table tfoot .total {
     border-left: 0;
     font-size: 1.5rem;
 }
 
-.Table tfoot .prix-total
-{
+.Table tfoot .prix-total {
     font-size: 1.5rem;
     color: #222FC4;
 }
 
-.Table tfoot td .Suppr input[type=submit]
-{
-    transform: scale(1.10);
+.Table tfoot td .Suppr input[type=submit] {
     background-color: crimson;
     color: white;
-    width: 160%;
-    margin-left: 30px;
     font-size: 1rem;
     border: 0;
     padding: 5px;
@@ -1074,14 +965,17 @@ form > input[type=submit]:hover
     box-shadow: none;
 }
 
-.Table tfoot td .Suppr input[type=submit]:hover
-{
+.Table tfoot td .Suppr input[type=submit]:hover {
     background-color: darkred;
     cursor: pointer;
 }
 
-.Boutons
+.Suppr
 {
+    display: block;
+}
+
+.Boutons {
     width: 80%;
     margin: 20px auto;
     display: flex;
@@ -1089,8 +983,7 @@ form > input[type=submit]:hover
     justify-content: space-between;
 }
 
-.Bouton
-{
+.Bouton {
     display: block;
     justify-self: center;
     text-decoration: none;
@@ -1102,53 +995,46 @@ form > input[type=submit]:hover
     border-radius: 5px;
     cursor: pointer;
     transition: all 700ms;
-    font-family: 'Nunito',cursive;
+    font-family: 'Nunito', cursive;
     box-shadow: 0 3px 2px 3px #659ABD;
     padding: 20px 10px;
 }
 
-.Bouton:hover
-{
+.Bouton:hover {
     cursor: pointer;
     background: #ADD4F3;
     color: #284E7B;
     transform: scale(1.07);
 }
 
-.form-Bouton
-{
+.form-Bouton {
     width: 40%;
     margin: 0;
     display: block;
 }
 
-.photo-produit
-{
+.photo-produit {
     width: 15%;
 }
 
-.nom-produit
-{
+.nom-produit {
     justify-self: center;
 }
 
-.bouton-panier
-{
+.bouton-panier {
     font-size: 2rem;
     margin-left: 500px;
     color: #284E7B;
     transition: all 700ms;
 }
 
-.bouton-panier:hover
-{
+.bouton-panier:hover {
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.1);
     color: #ADD4F3;
 }
 
-.choix-pack
-{
+.choix-pack {
     grid-row: 5 / 6;
     grid-column: 1 / 3;
     display: flex;
@@ -1157,12 +1043,33 @@ form > input[type=submit]:hover
     justify-self: center;
 }
 
-.choix-pack input[type=number]
-{
+.choix-pack input[type=number] {
     width: 20%;
 }
 
-.choix-pack button
-{
+.choix-pack button {
     width: 15%;
+}
+
+.panier-vide {
+    font-size: 1.5rem;
+    color: crimson;
+}
+
+.motif, #motif
+{
+    grid-column: 1 / 3;
+}
+
+.envoye
+{
+    justify-self: center;
+    font-size: 1.5rem;
+    color: green;
+    grid-column: 1 / 3;
+}
+
+.erreur-val
+{
+    font-size: 1.3rem;
 }

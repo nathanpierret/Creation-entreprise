@@ -5,6 +5,96 @@
         //Création du panier dans la session
         $_SESSION["panier"] = [];
     }
+    require_once "./src/modele/reception-mails-db.php";
+
+    $destinataire = "support.paradice@gmail.com";
+    $prenom = null;
+    $nom = null;
+    $email = null;
+    $telephone = null;
+    $motif = null;
+    $message = null;
+    $envoi = false;
+    $erreurs = [];
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+        if (empty(trim($_POST["prenom"]))) {
+            $erreurs["prenom"] = "Le prénom est obligatoire !";
+        } else {
+            $prenom = trim($_POST["prenom"]);
+        }
+
+        if (empty(trim($_POST["nom"]))) {
+            $erreurs["nom"] = "Le nom est obligatoire !";
+        } else {
+            $nom = trim($_POST["nom"]);
+        }
+
+        if (empty(trim($_POST["mail"]))) {
+            $erreurs["mail"] = "L'e-mail est obligatoire !";
+        } elseif (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
+            $erreurs["mail"] = "Il faut que l'adresse mail soit valide (avec un @ et un nom de domaine valide) !";
+        } else {
+            $email = trim($_POST["mail"]);
+        }
+
+        if (empty(trim($_POST["telephone"]))) {
+            $erreurs["telephone"] = "Le numéro de téléphone est obligatoire !";
+        } else {
+            $telephone = trim($_POST["telephone"]);
+        }
+
+        if (empty(trim($_POST["motif"]))) {
+            $erreurs["motif"] = "L'objet du mail est obligatoire !";
+        } else {
+            $motif = trim($_POST["motif"]);
+        }
+
+        if (empty(trim($_POST["message"]))) {
+            $erreurs["message"] = "Le mail doit contenir un message !";
+        } else {
+            $message = trim($_POST["message"]);
+        }
+
+        if (empty($_FILES["photo"]["name"])) {
+            $libPhoto = null;
+        } else {
+            $libPhoto = $_FILES["photo"]["name"];
+            $typeFichier = $_FILES["photo"]["type"];
+            $tmpFichier = $_FILES["photo"]["tmp_name"];
+            $tailleFichier = $_FILES["photo"]["size"];
+            $extensionFichier = pathinfo($libPhoto, PATHINFO_EXTENSION);
+            //Tester la taille du fichier
+            if ($tailleFichier > 5 * 1024 * 1024) {
+                $erreurs["photo"] = "Une image ne doit pas dépasser 5 Mo !";
+            } else {
+                $libPhoto = uniqid() . "." . $extensionFichier;
+                if (!move_uploaded_file($tmpFichier, "./images/$libPhoto")) {
+                    $erreurs["photo"] = "Un problème interne est survenu !";
+                }
+            }
+        }
+
+        if (empty($erreurs)) {
+            $entetes = [
+                "from" => $email,
+                "content-type" => "text/plain; charset=utf-8"
+            ];
+            if (mail($destinataire, $_POST["motif"], $_POST["message"], $entetes)) {
+                addMail($prenom, $nom, $email, $telephone, $motif, $message, $libPhoto);
+            } else {
+                echo "Une erreur est survenue.";
+            }
+            $prenom = null;
+            $nom = null;
+            $mail = null;
+            $telephone = null;
+            $motif = null;
+            $message = null;
+            $envoi = true;
+        }
+    }
 ?>
 
 <!doctype html>
@@ -41,7 +131,9 @@
         <h2 class="title2">Besoin de nous contacter ? On est là pour vous.</h2>
         <div>
             <form action="" method="post" enctype="multipart/form-data">
-
+                <?php if ($envoi) { ?>
+                    <div class="envoye">Votre message a bien été envoyé !</div>
+                <?php }?>
                 <label for="prenom">Prénom <span class="etoile">*</span></label>
                 <label for="nom">Nom <span class="etoile">*</span></label>
 
@@ -53,6 +145,9 @@
 
                 <input type="text" name="mail" id="mail" value="">
                 <input type="text" name="telephone" id="telephone" value="">
+
+                <label for="motif" class="motif">Motif <span class="etoile">*</span></label>
+                <input type="text" name="motif" id="motif" value="">
 
                 <label for="message" class="message">Message <span class="etoile">*</span></label>
                 <textarea name="message" id="message" cols="50" rows="10"></textarea>

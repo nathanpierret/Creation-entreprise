@@ -94,7 +94,7 @@
                                 <input type="submit" name="btn-modifier" value="Modifier">
                             </form>
                         </td>
-                        <td><?= $produit["prix"]*$produit["quantite"]?> €</td>
+                        <td class="td4"><?= $produit["prix"]*$produit["quantite"]?> €</td>
                         <td>
                             <form method="post" class="Suppr">
                                 <input type="hidden" name="nom-produit" value="<?= $produit["nom"]?>">
@@ -107,7 +107,11 @@
             </table>
             <div class="Boutons">
                 <a href="produits.php" class="Bouton">Continuer mes achats</a>
-                <a href="commande.php" class="Bouton">Passer ma commande</a>
+                <?php if ($_SESSION["panier"] == []) { ?>
+                    <div class="panier-vide">Votre panier est vide !</div>
+                <?php } else { ?>
+                    <a href="commande.php" class="Bouton">Passer ma commande</a>
+                <?php } ?>
             </div>
         </div>
     </div>

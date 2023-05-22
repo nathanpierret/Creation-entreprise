@@ -44,13 +44,14 @@
                     $couleurChoisie = $_POST["couleur2"];
                     $qteChoisie = $_POST["quantite"];
                     $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur2"]);
-                    if (array_key_exists($nomProduit,$_SESSION["panier"]) and $_SESSION["panier"]["couleur"] == $couleurChoisie) {
+                    if (array_key_exists($nomProduit,$_SESSION["panier"]) and $_SESSION["panier"][$nomProduit]["couleur"] == $couleurChoisie) {
                         //Le produit est déjà présent
                         $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
                     } else {
                         //Le produit n'est pas présent
                         //Il faut créer le produit
                         $produit = [
+                            "id" => $id,
                             "photo" => $photoProduit,
                             "nom" => $nomProduit,
                             "couleur" => $couleurChoisie,
@@ -76,6 +77,7 @@
                 //Le produit n'est pas présent
                 //Il faut créer le produit
                 $produit = [
+                    "id" => $id,
                     "photo" => $photoProduit,
                     "nom" => $nomProduit,
                     "couleur" => "---",
@@ -156,7 +158,11 @@
                 <form method="post" class="choix-produit">
                     <input type="hidden" name="couleur2" value="<?php if (isset($_POST["couleur"])) { echo $_POST["couleur"]; } else { echo $couleurNull; }?>">
                     <input type="number" max="<?= $quantiteMax["qte_stock"] ?>" min="1" name="quantite" value="1">
-                    <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
+                    <?php if (isset($_POST["couleur"])) {?>
+                        <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
+                    <?php } else { ?>
+                        <div class="erreur-val">Choisissez une couleur !</div>
+                    <?php } ?>
                 </form>
                 <?php } else { ?>
                 <form method="post" class="choix-pack">
