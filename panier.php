@@ -10,9 +10,29 @@
 
     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if (isset($_POST["btn-modifier"])) {
-            $_SESSION["panier"][$_POST["nom-produit"]]["quantite"] = $_POST["quantite"];
+            if ($_POST["couleur-produit"] == "---") {
+                if ($_POST["quantite"] > $_SESSION["panier"][$_POST["nom-produit"]]["max"]["qte_stock"]) {
+                    $_SESSION["panier"][$_POST["nom-produit"]]["quantite"] = $_SESSION["panier"][$_POST["nom-produit"]]["max"]["qte_stock"];
+                } else if ($_POST["quantite"] < 1) {
+                    $_SESSION["panier"][$_POST["nom-produit"]]["quantite"] = 1;
+                } else {
+                    $_SESSION["panier"][$_POST["nom-produit"]]["quantite"] = $_POST["quantite"];
+                }
+            } else {
+                if ($_POST["quantite"] > $_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]["max"]["qte_stock"]) {
+                    $_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]["quantite"] = $_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]["max"]["qte_stock"];
+                } else if ($_POST["quantite"] < 1) {
+                    $_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]["quantite"] = 1;
+                } else {
+                    $_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]["quantite"] = $_POST["quantite"];
+                }
+            }
         } else if (isset($_POST["btn-supprimer"])) {
-            unset($_SESSION["panier"][$_POST["nom-produit"]]);
+            if ($_POST["couleur-produit"] == "---") {
+                unset($_SESSION["panier"][$_POST["nom-produit"]]);
+            } else {
+                unset($_SESSION["panier"][$_POST["nom-produit"].$_POST["couleur-produit"]]);
+            }
         } else if (isset($_POST["btn-vider"])) {
             $_SESSION["panier"] = [];
         }
@@ -34,7 +54,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Notre entreprise</title>
+    <title>Votre panier</title>
 </head>
 <body>
 
@@ -83,14 +103,15 @@
                 <tbody>
                 <?php foreach ($_SESSION["panier"] as $produit) {?>
                     <tr>
-                        <td><img src="images/<?=$produit["photo"]?>" alt="Photo de <?=$produit["nom"] ?>" class="photo-produit">
+                        <td class="td1"><img src="images/<?=$produit["photo"]?>" alt="Photo de <?=$produit["nom"] ?>" class="photo-produit">
                             <div class="nom-produit"><?= $produit["nom"]?></div></td>
-                        <td class="td2"><?php if ($produit["couleur"] == "---") {echo $produit["couleur"]; } else { $couleur = selectColorById($produit["couleur"]); echo $couleur["nom_couleur"]; }?></td>
+                        <td class="td2"><?php if ($produit["couleur"] == "---"){echo selectColorById(null); } else { $couleur = selectColorById($produit["couleur"]); echo $couleur["nom_couleur"]; }?></td>
                         <td><?= $produit["prix"]?> €</td>
                         <td class="td3">
                             <form method="post">
                                 <input type="hidden" name="nom-produit" value="<?= $produit["nom"]?>">
-                                <input type="number" name="quantite" min="1" max="<?= $produit["max"]["qte_stock"] ?>" value="<?= $produit["quantite"]?>">
+                                <input type="hidden" name="couleur-produit" value="<?= $produit["couleur"]?>">
+                                <input type="number" name="quantite" value="<?= $produit["quantite"]?>">
                                 <input type="submit" name="btn-modifier" value="Modifier">
                             </form>
                         </td>
@@ -98,6 +119,7 @@
                         <td>
                             <form method="post" class="Suppr">
                                 <input type="hidden" name="nom-produit" value="<?= $produit["nom"]?>">
+                                <input type="hidden" name="couleur-produit" value="<?= $produit["couleur"]?>">
                                 <input type="submit" name="btn-supprimer" value="Supprimer">
                             </form>
                         </td>

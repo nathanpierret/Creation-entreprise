@@ -58,11 +58,11 @@
             <li>10 mars 2022 : Création de l'entreprise familiale par Lucas et Gladys Masnot à Besançon.</li>
             <li>24 mai 2022 : Ouverture du site internet PARADICE.</li>
             <li>15 octobre 2022 : Agrandissement de l'entreprise et ouverture de 12 nouveaux magasins dans la région deFranche-Comté.</li>
-            <li>8 décembre 2022 : Célébration du 100,000ème dé vendu et ouverture de 8 nouveaux magasins dans la région Rhône-Alpes.</li>
+            <li>8 décembre 2022 : Célébration du 1,000,000ème dé vendu et ouverture de 8 nouveaux magasins dans la région Rhône-Alpes.</li>
             <li>19 janvier 2023 : Célébration du 100ème salarié dans l'entreprise et ouverture de 13 nouveaux magasins dans la région de
             Bourgogne.</li>
-            <li>22 janvier 2023 : Record de ventes dans l'entreprise : 45,468 dés vendus en une semaine.</li>
-            <li>2 février 2023 : Célébration du 200,000ème dé vendu et ouverture de 9 nouveaux magasins dnas la région d'Alsace.</li>
+            <li>22 janvier 2023 : Record de ventes dans l'entreprise : 545,468 dés vendus en une semaine.</li>
+            <li>2 février 2023 : Célébration du 2,000,000ème dé vendu et ouverture de 9 nouveaux magasins dnas la région d'Alsace.</li>
         </ul>
 
         <div class="ligne">

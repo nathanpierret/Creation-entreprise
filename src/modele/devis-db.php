@@ -28,3 +28,13 @@ function selectIdDevisFromNameAndDate (string $nomClient, string $prenomClient, 
     $id = $requete->fetch(PDO::FETCH_ASSOC);
     return $id;
 }
+
+function selectDevisById (int $idDevis): array {
+    $connexion = createConnection();
+    $requeteSQL = "SELECT * FROM devis WHERE id_devis = :idDevis";
+    $requete = $connexion->prepare($requeteSQL);
+    $requete->bindValue(":idDevis",$idDevis);
+    $requete->execute();
+    $devis = $requete->fetch(PDO::FETCH_ASSOC);
+    return $devis;
+}

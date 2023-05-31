@@ -12,3 +12,13 @@ function addContenuDevis (int $idDevis, int $idProd, int $idCouleur, int $qtePro
     $requete->bindValue(":qteProd",$qteProd);
     $requete->execute();
 }
+
+function selectContenuDevisById (int $idDevis) {
+    $connexion = createConnection();
+    $requeteSQL = "SELECT * FROM contenu_devis WHERE id_devis = :idDevis";
+    $requete = $connexion->prepare($requeteSQL);
+    $requete->bindValue(":idDevis",$idDevis);
+    $requete->execute();
+    $devis = $requete->fetchAll(PDO::FETCH_ASSOC);
+    return $devis;
+}

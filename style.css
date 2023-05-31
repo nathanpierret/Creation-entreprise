@@ -129,15 +129,15 @@ li > a:hover {
 
 .cartes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 0.2fr));
     grid-gap: 25px;
 }
 
 .carte2 {
     display: grid;
     align-self: center;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 200px 40px 40px 120px 50px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: 120px 40px 40px 100px 50px;
     border-radius: 10px;
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
@@ -503,10 +503,10 @@ form > input[type=submit]:hover {
 
 .carte {
     display: grid;
-    height: 510px;
+    height: 410px;
     align-self: center;
     grid-template-columns: 350px;
-    grid-template-rows: 200px 40px 40px 120px 50px;
+    grid-template-rows: 120px 40px 40px 100px 50px;
     border-radius: 10px;
     grid-row-gap: 15px;
     box-shadow: 5px 5px 5px #676767;
@@ -534,7 +534,7 @@ form > input[type=submit]:hover {
 .image {
     grid-row: 1 / 2;
     justify-self: center;
-    height: 200px;
+    height: 150px;
     border-radius: 10px 10px 0 0;
     margin: 0;
     padding: 10px;
@@ -554,7 +554,7 @@ form > input[type=submit]:hover {
     grid-row: 2 / 3;
     justify-self: center;
     align-self: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .nom-article2 {
@@ -569,7 +569,7 @@ form > input[type=submit]:hover {
     grid-row: 3 / 4;
     justify-self: center;
     align-self: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .prix-achat2 {
@@ -586,6 +586,7 @@ form > input[type=submit]:hover {
     align-self: center;
     padding: 0 15px;
     text-align: justify;
+    font-size: 1rem;
 }
 
 .description-rapide2 {
@@ -870,6 +871,10 @@ form > input[type=submit]:hover {
     font-size: 1rem;
 }
 
+.Table tbody .td1 {
+    width: 30%;
+}
+
 .Table tbody .td2 {
     width: 10%;
 }
@@ -1072,4 +1077,62 @@ form > input[type=submit]:hover {
 .erreur-val
 {
     font-size: 1.3rem;
+}
+
+.devis
+{
+    height: 90vh;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.devis > *
+{
+    font-family: 'Nunito', cursive;
+    font-size: 1.2rem;
+}
+
+.title-devis
+{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #284E7B;
+}
+
+.nom-client, .email-client, .telephone-client
+{
+    font-size: 1.5rem;
+    color: #1C6EA4;
+}
+
+.telephone-client
+{
+    margin-bottom: 30px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.info-devis
+{
+    font-size: 1rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top: 2px solid black;
+}
+
+.retour-devis
+{
+    color: #1C6EA4;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 500ms;
+}
+
+.retour-devis:hover
+{
+    color: #ADD4F3;
 }

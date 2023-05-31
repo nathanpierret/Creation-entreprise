@@ -103,7 +103,7 @@
             <h2 class="titre3">Certains chiffres</h2>
             <div class="bulle1"><span class="gras">2022</span>Date de création de l'entreprise</div>
             <div class="bulle2"><span class="gras">128</span>Salariés passionnés de dés</div>
-            <div class="bulle3"><span class="gras">240,000+</span>Dés vendus dans toute la France</div>
+            <div class="bulle3"><span class="gras">2,400,000+</span>Dés vendus dans toute la France</div>
         </div>
         </div>
         <footer class="footer">

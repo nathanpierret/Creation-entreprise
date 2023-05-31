@@ -42,11 +42,21 @@
                     $photoProduit = $deChoisi["lib_photo"];
                     $prixProduit = $deChoisi["prix_prod"];
                     $couleurChoisie = $_POST["couleur2"];
-                    $qteChoisie = $_POST["quantite"];
                     $quantiteMax = selectQuantityFromAllIds($id,$_POST["couleur2"]);
-                    if (array_key_exists($nomProduit,$_SESSION["panier"]) and $_SESSION["panier"][$nomProduit]["couleur"] == $couleurChoisie) {
+                    if ($_POST["quantite"] == "" or $_POST["quantite"] < 1) {
+                        $qteChoisie = 1;
+                    } else if ($_POST["quantite"] > $quantiteMax["qte_stock"]) {
+                        $qteChoisie = $quantiteMax["qte_stock"];
+                    } else {
+                        $qteChoisie = $_POST["quantite"];
+                    }
+                    if (array_key_exists($nomProduit.$couleurChoisie,$_SESSION["panier"])) {
                         //Le produit est déjà présent
-                        $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
+                        if ($_SESSION["panier"][$nomProduit.$couleurChoisie]["quantite"]+$qteChoisie > $quantiteMax["qte_stock"]) {
+                            $_SESSION["panier"][$nomProduit.$couleurChoisie]["quantite"] = $quantiteMax["qte_stock"];
+                        } else {
+                            $_SESSION["panier"][$nomProduit.$couleurChoisie]["quantite"] += $qteChoisie;
+                        }
                     } else {
                         //Le produit n'est pas présent
                         //Il faut créer le produit
@@ -60,7 +70,7 @@
                             "max" => $quantiteMax
                         ];
                         //Ajout du produit dans le panier
-                        $_SESSION["panier"][$nomProduit] = $produit;
+                        $_SESSION["panier"][$nomProduit.$couleurChoisie] = $produit;
                     }
                 }
             }
@@ -68,11 +78,21 @@
             $nomProduit = $deChoisi["nom_prod"];
             $photoProduit = $deChoisi["lib_photo"];
             $prixProduit = $deChoisi["prix_prod"];
-            $qteChoisie = $_POST["quantite"];
             $quantiteMax = selectQuantityFromAllIds($id,1);
+            if ($_POST["quantite"] == "" or $_POST["quantite"] < 1) {
+                $qteChoisie = 1;
+            } else if ($_POST["quantite"] > $quantiteMax["qte_stock"]) {
+                $qteChoisie = $quantiteMax["qte_stock"];
+            } else {
+                $qteChoisie = $_POST["quantite"];
+            }
             if (array_key_exists($nomProduit,$_SESSION["panier"])) {
                 //Le produit est déjà présent
-                $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
+                if (($_SESSION["panier"][$nomProduit]["quantite"]+$qteChoisie) > $quantiteMax["qte_stock"]) {
+                    $_SESSION["panier"][$nomProduit]["quantite"] = $quantiteMax["qte_stock"];
+                } else {
+                    $_SESSION["panier"][$nomProduit]["quantite"] += $qteChoisie;
+                }
             } else {
                 //Le produit n'est pas présent
                 //Il faut créer le produit
@@ -145,7 +165,7 @@
                         <?php foreach ($couleurs as $couleur) { ?>
                         <option value="<?= $couleur["id_couleur"] ?>"
                             <?php if (isset($_POST["couleur"]) && $_POST["couleur"] == $couleur["id_couleur"]) {?> selected <?php }?>>
-                            <?= selectColorById($couleur["id_couleur"])["nom_couleur"] ?></option>
+                            <?= selectColorById($couleur["id_couleur"])["nom_couleur"]." - Stock : ".selectQuantityFromAllIds($id,$couleur["id_couleur"])["qte_stock"] ?></option>
                         <?php } ?>
                     </select>
                     <input type="submit" value="Choisir" name="couleur-choix">
@@ -157,7 +177,7 @@
 
                 <form method="post" class="choix-produit">
                     <input type="hidden" name="couleur2" value="<?php if (isset($_POST["couleur"])) { echo $_POST["couleur"]; } else { echo $couleurNull; }?>">
-                    <input type="number" max="<?= $quantiteMax["qte_stock"] ?>" min="1" name="quantite" value="1">
+                    <input type="number" name="quantite" value="1">
                     <?php if (isset($_POST["couleur"])) {?>
                         <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
                     <?php } else { ?>
@@ -166,7 +186,7 @@
                 </form>
                 <?php } else { ?>
                 <form method="post" class="choix-pack">
-                    <input type="number" max="" min="1" name="quantite" value="1">
+                    <input type="number" name="quantite" value="1">
                     <button type="submit" name="ajout-panier"><i class="fa-solid fa-cart-plus"></i></button>
                 </form>
                 <?php } ?>

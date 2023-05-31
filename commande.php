@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             updateQuantityFromAllIdsAndProdQuantity($idProd,$idCouleur,$qteProd);
         }
         unset($_SESSION["panier"]);
-        header("Location: index.php");
+        header("Location: recap-devis.php?id=".$idDevis["id_devis"]);
     }
 }
 ?>
